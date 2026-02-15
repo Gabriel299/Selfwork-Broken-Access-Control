@@ -86,11 +86,21 @@ class ArticleController extends Controller
 
     public function edit(Article $article)
     {
-        return view('articles.edit',compact('article'));
+        // return view('articles.edit',compact('article'));
+        if(Auth::id() !== $article->user_id && !Auth::user()->isAdmin()) {
+            return redirect()->route("articles.index")->with("message","Not authorized");
+        }
+        return view("articles.edit",compact("article"));
     }
 
     public function update(Request $request, Article $article/*,HtmlFilterService $htmlFilterService*/)
     {
+
+        if(Auth::id() !== $article->user_id && !Auth::user()->isAdmin()) {
+            return redirect()->route("articles.index")->with("message","Not authorized");
+        }
+        return view("articles.edit",compact("article"));
+
         // UNSECURE
         $articleData = $request->all();
 
@@ -109,9 +119,9 @@ class ArticleController extends Controller
     public function destroy(Article $article, Request $request)
     {
         // SECURE
-        // if(Auth::id() !== $article->user_id){
-        //     return redirect()->route('articles.show', $article)->with('message','Not authorized');
-        // }
+        if(Auth::id() !== $article->user_id && !Auth::user()->isAdmin()){
+            return redirect()->route('articles.show', $article)->with('message','Not authorized');
+        }
         
         $article->delete();
         
