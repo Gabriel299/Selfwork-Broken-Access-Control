@@ -32,9 +32,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/articles/{article}', [ArticleController::class, 'update'])->name('articles.update');
     Route::get('/articles/{article}/delete', [ArticleController::class, 'destroy'])->name('articles.destroy');
     // UNSECURE
-    Route::get('/users/{id}',[UserController::class,'show'])->name('profile');
+    // Route::get('/users/{id}',[UserController::class,'show'])->name('profile');
     // SECURE
-    // Route::get('/profile',[UserController::class,'profile'])->name('profile');
+    Route::get('/profile',[UserController::class,'profile'])->name('profile');
 
     Route::patch('/users/{id}/update',[UserController::class,'update'])->name('users.update');
     Route::post('/users/name/change',[UserController::class,'changeName'])->name('change.name');
