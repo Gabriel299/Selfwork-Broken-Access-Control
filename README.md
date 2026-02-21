@@ -9,3 +9,8 @@ In questa soluzione sono state mitigate le vulnerabilità come visto nella video
 In questa seconda soluzione sono state mitigate le vulnerabilità come visto nella video-lezione nello specifico:
 1. modificato l'algoritmo di hashing per l'upload dell'immagine per l'avatar
 2. implementazione delle tecniche di salting e peppering
+
+# Selfwork Cryptographic Injection
+In questa terza soluzione sono state mitigate le vulnerabilità come visto nella video-lezione nello specifico:
+1. modifica della funzione di ricerca sostituendo un metodo raw con un metodo che permette di filtrare le query
+2. creazione di un nuovo utente sul server che ha accesso solo al database utilizzato nel blog e che ha solo i permessi minimi necessari
