@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -103,5 +104,82 @@ class UserController extends Controller
 
     public function download(Request $request) {
         return response()->download(storage_path('app/private/'.$request->get('filename')));
+    }
+
+    public function upload(Request $request)
+    {
+        if(!$user = Auth::user()) {
+            return back()->with("message", "Please Log In");
+        }
+
+        if (!$request->hasFile("file")) {
+            return back()->withErrors("Forbidden Operation");
+        }
+        // $path = storage_path("app/public/docs/users".$user->id);
+
+        // if (!file_exists($path)) {
+        //     mkdir($path, 0777, true);
+        // }
+
+        // $file = $request->file("file");
+
+        // UNSECURE
+
+        // $filename = $file->getClientOriginalName();
+
+        // $file->move($path, $filename);
+
+        // File::create([
+        //     "name"=>$filename,
+        //     "user_id"=>$user->id
+        // ]);
+
+        // SECURE
+        // Definisci le estensioni e i MINE type permessi
+        $allowedExtensions = ["jpg", "jpeg", "png", "gif", "pdf"];
+        $allowedMineTypes = ["image/jpeg", "iamge/png", "iamge/gif", "application/pdf"];
+
+        $file = $request->file("file");
+        $extension = strtolower($file->getClientOriginalExtension());
+        $mineType = $file->getMimeType();
+
+        if (!in_array($extension, $allowedExtensions) || !in_array($mineType, $allowedMineTypes)) {
+            return back()->withErrors("File type not allowed");
+        }
+        $filename = $file->getClientOriginalName();
+        // Genera il nome sicuro
+        $fileuid = uniqid().".".$extension;
+
+        // Salva il file in una cartella non pubblica (storage/app/private/docs/users/{$user->id})
+        $path = $file->storeAs("docs/users/{$user->id}", $fileuid, "local");
+
+        // Salva il record nel DB
+        File::create([
+            "name"=> $filename,
+            "uid"=> $fileuid,
+            "user_id"=> $user->id
+        ]);
+        return back()->withMessage("Upload successful");
+    }
+
+    public function downloadPrivateFile($file)
+    {
+        if(!$user = Auth::user()){
+            return back()->with("message", "Please Log In");
+        }
+
+        $fileRecord = File::where("uid", $file)->where("user_id", $user->id)->firstOrFail();
+
+        if(!$fileRecord) {
+            return back()->with("message","File not found");
+        }
+
+        $path = "docs/users/{$user->id}/{$fileRecord->uid}";
+
+        if (!Storage::disk("local")->exists($path)) {
+            abort(404);
+        }
+
+        return Storage::disk("local")->download($path, $fileRecord->udi);
     }
 }
