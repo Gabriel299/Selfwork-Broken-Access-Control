@@ -17,5 +17,10 @@ In questa terza soluzione sono state mitigate le vulnerabilità come visto nella
 
 # Selfwork Insecure Design
 In questa quarta soluzione sono state mitigate le vulnerabilità come visto nella video-lezione nello specifico:
-1. Creare e registrare un middleware che impone un rate limit ai commenti che possono essere inseriti in un minuto da uno specifico IP, bloccando la possibilità di inserirne altri superata la soglia
+1. creare e registrare un middleware che impone un rate limit ai commenti che possono essere inseriti in un minuto da uno specifico IP, bloccando la possibilità di inserirne altri superata la soglia
 2. implementare il middleware nella route del inserimento dei commenti
+
+# Selfwork Security Misconfiguration
+In questa quinta soluzione sono state mitigate le vulnerabilità come visto nella video-lezione nello specifico:
+1. blocco dell’upload di estensioni pericolose decidendo quali accettare
+2. modifica della cartella di salvataggio del file
