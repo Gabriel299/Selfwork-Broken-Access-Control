@@ -34,3 +34,8 @@ In questa sesta soluzione sono state mitigate le vulnerabilità come visto nella
     * <code>npm audit</code>
     * <code>npm audit fix</code>
 3. test per verificare l'integrità del progetto dopo gli aggiornamenti dei pacchetti
+
+# Selfwork Identification and Authentication Failures
+In questa settima soluzione sono state mitigate le vulnerabilità come visto nella video-lezione nello specifico:
+1. implementazione eliminazione della sessione alla chiusura del browser
+2. miglioramento regole per la validazione della password
