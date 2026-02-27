@@ -29,14 +29,17 @@ In questa quinta soluzione sono state mitigate le vulnerabilità come visto nell
 In questa sesta soluzione sono state mitigate le vulnerabilità come visto nella video-lezione nello specifico:
 1. ricerca e mitigazione di eventuali vulnerabilità php utlilizzando i comandi:
     * <code>composer audit</code>
-    
     * <code>composer update</code>
 2. ricerca e mitigazione di eventuali vulnerabilità front-end utlilizzando i comandi:
     * <code>npm audit</code>
-    <img src="/img/composer_update.png" alt="Risultato composer audit">
     * <code>npm audit fix</code>
-    <img src="/img/npm_audit.png" alt="Risultato npm audit">
 3. test per verificare l'integrità del progetto dopo gli aggiornamenti dei pacchetti
+<br>
+<strong>Risultato mitigazione:</strong>
+<br>
+<br>
+<img src="/img/composer_update.png" alt="Risultato composer audit">
+<img src="/img/npm_audit.png" alt="Risultato npm audit">
 
 # Selfwork Identification and Authentication Failures
 In questa settima soluzione sono state mitigate le vulnerabilità come visto nella video-lezione nello specifico:
