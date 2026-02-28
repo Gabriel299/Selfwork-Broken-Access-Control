@@ -17,6 +17,9 @@
                 <input type="text" class="form-control rounded-pill" id="title" placeholder="An interesting title here" name="title">
               </div>
               <div class="mb-3">
+                @livewire('article-image-preview')
+              </div>
+              <div class="mb-3">
                 <label for="editor" class="form-label fw-semibold">Content</label>
                 <div id="editor" style="height: 200px;"></div>
                 <input type="hidden" name="content" id="content-input">
