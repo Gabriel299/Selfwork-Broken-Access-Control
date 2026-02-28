@@ -27,13 +27,14 @@ class BlockSuspiciousIP
 
         if (Cache::has($key . ":blocked")) {
             Session::flash("errors", "Your IP has been blocked for $this->blockMinutes minutes(s) due to too many requests");
+            Log::critical("IP $ip has been blocked for $this->blockMinutes minute(s) due too many requests.");
             return redirect()->back();
         }
         if (Cache::has($key)) {
             $attempts = Cache::increment($key);
             if ($attempts > $this->maxAttempts) {
                 Cache::put($key . ":blocked", true, $this->blockMinutes * 60);
-                Log::warning("IP has been blocked for $this->blockMinutes minutes(s) due to too many requests");
+                Log::critical("IP $ip has been blocked for $this->blockMinutes minute(s) due too many requests.");
                 Session::flash("errors", "Your IP has been blocked for $this->blockMinutes minutes(s) due to too many requests");
                 return redirect()->back();
             }

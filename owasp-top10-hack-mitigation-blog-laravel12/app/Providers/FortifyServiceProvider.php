@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use Opcodes\LogViewer\Facades\LogViewer;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -60,5 +61,11 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetPasswordView(function ($request) {
             return view('auth.reset-password', ['request' => $request]);
         });
+
+        LogViewer::auth(function ($request) {
+            $admins = config('logviewer.admins', []);
+            return $request->user()
+                && in_array($request->user()->email, $admins);
+    });
     }
 }

@@ -34,6 +34,17 @@
           </div>
         </a>
       </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <a href="{{route('log-viewer')}}" class="text-decoration-none">
+          <div class="card shadow-lg border-0 dashboard-card h-100 text-center p-4 position-relative" style="background:linear-gradient(135deg, #fc5c7d 0%, #6a82fb 100%); color: #fff; transition: transform .2s, box-shadow .2s; cursor:pointer;">
+            <div class="mb-3"><i class="bi bi-clipboard2-check display-3"></i></div>
+            <h3 class="fw-bold mb-2">Logging</h3>
+            <p class="mb-0">Check the logs</p>
+          </div>
+        </a>
+      </div>
+
       <div class="col-12 col-md-6 col-lg-3">
         <a href="{{route('admin.articles')}}" class="text-decoration-none">
           <div class="card shadow-lg border-0 dashboard-card h-100 text-center p-4 position-relative" style="background: linear-gradient(135deg, #fc5c7d 0%, #6a82fb 100%); color: #fff; transition: transform .2s, box-shadow .2s; cursor:pointer;">
