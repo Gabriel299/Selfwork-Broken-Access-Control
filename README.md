@@ -42,3 +42,10 @@ In questa sesta soluzione sono state mitigate le vulnerabilità come visto nella
 In questa settima soluzione sono state mitigate le vulnerabilità come visto nella video-lezione nello specifico:
 1. implementata l'eliminazione della sessione alla chiusura del browser
 2. miglioramento regole per la validazione della password
+
+# Selfwork Security Logging and Monitory Failures
+In questa ottava soluzione sono state mitigate le vulnerabilità come visto nella video-lezione nello specifico:
+1. aggiunta di un log che ci fornisce informazioni sull'autenticazione
+2. aggiunta di un log che ci fornisce informazioni sul blocco per troppe richieste
+3. aggiunta nella dashboard admin di una sezione per il log view
+4. implementata protezione per la route log-viewer
