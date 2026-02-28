@@ -52,3 +52,12 @@ In questa ottava soluzione sono state mitigate le vulnerabilità come visto nell
 2. aggiunta di un log che ci fornisce informazioni sul blocco per troppe richieste
 3. aggiunta nella dashboard admin di una sezione per il log view
 4. implementata protezione per la route log-viewer
+
+# Selfwork Server-Side Request Forgery (SSRF)
+In questa nona soluzione sono state mitigate le vulnerabilità come visto nella video-lezione nello specifico:
+1. validazione dell'URL
+2. restrizione a solo richieste HTTPS
+3. blocco di richieste da localhost
+4. timeout corto e blocco dei redirect
+5. controllo del Contet-Type
+6. restrizione sulle dimenzioni dei file
