@@ -61,3 +61,10 @@ In questa nona soluzione sono state mitigate le vulnerabilità come visto nella 
 4. timeout corto e blocco dei redirect
 5. controllo del Contet-Type
 6. restrizione sulle dimenzioni dei file
+
+# Selfwork Framework Security
+In questa decima soluzione sono state mitigate le vulnerabilità come visto nella video-lezione nello specifico:
+1. mitigazione vulnerabilità derivanti dal mass assigment utilizzando fillable
+2. mitigazione possibilità attacco CSRF modificando la richiesta da GET a POST e implementando la logica
+3. mitigazione possibilità attacco XSS implementando una doppia validazione sia al salvatazzio che alla lettura
+4. mitigazione possibilità di attacco Path Traversal
